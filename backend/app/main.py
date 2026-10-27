@@ -4,15 +4,17 @@ from pydantic import ValidationError
 
 from app.database.mongo import ping_mongodb
 from app.routes.auth import router as auth_router
+from app.routes.productos import router as productos_router
 
 app = FastAPI(
     title="Cámaras de Seguridad - API",
     description="API para inventario de equipos de videovigilancia.",
-    version="0.3.0",
+    version="0.4.0",
 )
 
 
 app.include_router(auth_router)
+app.include_router(productos_router)
 
 
 @app.get("/api/health", tags=["Sistema"])
