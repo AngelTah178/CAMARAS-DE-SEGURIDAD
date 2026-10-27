@@ -1,0 +1,17 @@
+:root {
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: #172536;
+  background: #f3f6fb;
+}
+body { margin: 0; min-width: 320px; }
+.auth-shell { min-height: 100vh; display: grid; grid-template-columns: 1fr 1fr; }
+.auth-hero { background: linear-gradient(145deg,#10253d,#1c4870); color: white; display: flex; align-items: center; padding: clamp(2rem,6vw,6rem); }
+.hero-content { max-width: 540px; }
+.hero-symbol { font-size: 3rem; margin-bottom: 1.5rem; }
+.auth-panel { display: grid; place-items: center; padding: 2rem; }
+.login-card { width: min(100%,430px); border: 1px solid #e2e8f1; background: white; padding: clamp(1.5rem,4vw,2.5rem); border-radius: 22px; box-shadow: 0 20px 60px rgba(16,37,61,.07); }
+.text-muted-app { color: #64758b; }
+.app-dashboard { min-height: 100vh; background:#f3f6fb; }
+.app-topbar { background:white; border-bottom: 1px solid #e1e8f0; }
+.dashboard-card { background:white; border:1px solid #e2e8f1; border-radius:18px; padding:2rem; }
+@media (max-width: 800px) { .auth-shell { grid-template-columns: 1fr; } .auth-hero { min-height: 210px; padding: 2rem; } .hero-symbol { margin-bottom:.5rem; } }
