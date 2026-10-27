@@ -110,13 +110,12 @@ export default function App() {
           <button type="button" className={`btn ${view === "productos" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => setView("productos")}>Productos</button>
         </nav>
         {view === "productos" ? <Productos token={token} onUnauthorized={handleUnauthorized} /> : <>
-        <p className="text-muted-app mb-1">Panel de control</p>
-        <h1 className="h2 mb-4">Bienvenido, {admin.usuario}</h1>
-        <section className="dashboard-card">
-          <span className="badge text-bg-success mb-3">Sesión autenticada</span>
-          <h2 className="h4">Inventario de cámaras de seguridad</h2>
-          <p className="text-muted-app mb-0">Tu cuenta está validada por FastAPI y MongoDB Atlas. Consulta y administra productos desde la sección Productos. Los movimientos y la auditoría se implementarán en próximos sprints.</p>
-        </section>
+          <p className="text-muted-app mb-1">Panel de control</p>
+          <h1 className="h2 mb-4">Bienvenido, {admin.usuario}</h1>
+          <section className="dashboard-card">
+            <h2 className="h4">Inventario de cámaras de seguridad</h2>
+            <p className="text-muted-app mb-0">Proyecto realizado con MongoDB, Atlas, phyton y React, 3 litros de café y un proyecto reutilizable.</p>
+          </section>
         </>}
       </main>
     </div>;

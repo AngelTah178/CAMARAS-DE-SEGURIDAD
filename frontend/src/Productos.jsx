@@ -160,8 +160,8 @@ export default function Productos({ token, onUnauthorized }) {
         <div className="col-md-6"><label className="form-label" htmlFor="stock-min">Stock mínimo</label><input id="stock-min" type="number" min="0" step="1" className="form-control" value={form.stockMinimo} onChange={e => update("stockMinimo", e.target.value)} required disabled={saving} /></div>
         <div className="col-md-6"><label className="form-label" htmlFor="marca">Marca</label><input id="marca" className="form-control" value={form.marca} onChange={e => update("marca", e.target.value)} maxLength={80} disabled={saving} /></div>
         <div className="col-md-6"><label className="form-label" htmlFor="modelo">Modelo</label><input id="modelo" className="form-control" value={form.modelo} onChange={e => update("modelo", e.target.value)} maxLength={80} disabled={saving} /></div>
-      </div><p className="small text-muted-app mt-3">El stock inicial es 0. Las existencias se modificarán desde movimientos.</p>
-      <div className="d-flex justify-content-end gap-2"><button className="btn btn-outline-secondary" type="button" disabled={saving} onClick={() => setEditing(null)}>Cancelar</button><button className="btn btn-primary" type="submit" disabled={saving}>{saving ? "Guardando…" : "Guardar"}</button></div></form>
+      </div><p className="small text-muted-app mt-3"></p>
+        <div className="d-flex justify-content-end gap-2"><button className="btn btn-outline-secondary" type="button" disabled={saving} onClick={() => setEditing(null)}>Cancelar</button><button className="btn btn-primary" type="submit" disabled={saving}>{saving ? "Guardando…" : "Guardar"}</button></div></form>
     </section></div>}
   </section>;
 }
