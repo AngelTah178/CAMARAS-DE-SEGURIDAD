@@ -1,11 +1,12 @@
 from datetime import datetime, timedelta, timezone
 
 import jwt
-from fastapi import APIRouter, HTTPException
+from fastapi import APIRouter, Depends, HTTPException
 from pydantic import BaseModel, Field
 from pymongo import MongoClient
 from pymongo.errors import PyMongoError
 
+from app.core.auth_dependencies import require_admin
 from app.core.config import get_settings
 from app.core.security import verify_password
 
@@ -53,3 +54,8 @@ def login(datos: LoginRequest):
         algorithm="HS256",
     )
     return {"access_token": token, "token_type": "bearer", "expires_in": 1800}
+
+
+@router.get("/me")
+def me(admin: dict = Depends(require_admin)):
+    return admin
