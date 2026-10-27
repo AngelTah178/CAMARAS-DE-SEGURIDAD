@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from "react";
 import "./styles.css";
 import "./productos.css";
 import Productos from "./Productos.jsx";
+import Movimientos from "./Movimientos.jsx";
 
 const TOKEN_KEY = "securitystock_access_token";
 
@@ -108,8 +109,9 @@ export default function App() {
         <nav className="d-flex gap-2 mb-4" aria-label="Secciones del sistema">
           <button type="button" className={`btn ${view === "dashboard" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => setView("dashboard")}>Dashboard</button>
           <button type="button" className={`btn ${view === "productos" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => setView("productos")}>Productos</button>
+          <button type="button" className={`btn ${view === "movimientos" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => setView("movimientos")}>Movimientos</button>
         </nav>
-        {view === "productos" ? <Productos token={token} onUnauthorized={handleUnauthorized} /> : <>
+        {view === "productos" ? <Productos token={token} onUnauthorized={handleUnauthorized} /> : view === "movimientos" ? <Movimientos token={token} onUnauthorized={handleUnauthorized} /> : <>
           <p className="text-muted-app mb-1">Panel de control</p>
           <h1 className="h2 mb-4">Bienvenido, {admin.usuario}</h1>
           <section className="dashboard-card">
