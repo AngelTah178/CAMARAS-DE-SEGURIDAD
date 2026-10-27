@@ -18,7 +18,7 @@ cd backend
 .\.venv\Scripts\python.exe -m pip install -r requirements.txt
 .\.venv\Scripts\python.exe -m app.database.create_admin
 ```
-Introduce un usuario de 3-64 caracteres sin espacios y una contrasena unica de al menos 12 caracteres. No se mostraran las contrasenas en pantalla. La creacion se verifica al final solicitando de nuevo la contrasena.
+Introduce un usuario de 3-64 caracteres sin espacios y una contrasena unica de al menos 12 caracteres. No se mostraran las contrasenas en pantalla. La contraseña se verifica localmente contra su hash antes de guardar el administrador.
 
 ## Seguridad
 - No pegar contrasenas, hash o cadenas de conexion en chats o capturas.
