@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import "./styles.css";
 import "./productos.css";
 import Productos from "./Productos.jsx";
@@ -14,12 +14,12 @@ export default function App() {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [view, setView] = useState("dashboard");
-  const handleUnauthorized = () => {
+  const handleUnauthorized = useCallback(() => {
     sessionStorage.removeItem(TOKEN_KEY);
     setToken(null);
     setAdmin(null);
     setError("Tu sesión no es válida. Inicia sesión de nuevo.");
-  };
+  }, []);
 
   useEffect(() => {
     if (!token) {
