@@ -31,9 +31,11 @@ def main() -> int:
     except ValueError as exc:
         print(str(exc))
         return 1
-    finally:
-        password = None
-        confirm = None
+    if not verify_password(password, password_hash):
+        print("Fallo la verificacion local del hash.")
+        return 1
+    password = None
+    confirm = None
 
     settings = get_settings()
     client = MongoClient(
@@ -55,9 +57,7 @@ def main() -> int:
             "creadoEn": datetime.now(timezone.utc),
         })
         saved = users.find_one({"_id": result.inserted_id})
-        if (not saved
-                or saved["passwordHash"] != password_hash
-                or not verify_password(getpass("Verificar contrasena nuevamente: "), saved["passwordHash"])):
+        if not saved or saved["passwordHash"] != password_hash:
             print("La verificacion del registro fallo.")
             return 1
         print("Administrador registrado correctamente. Hash Argon2id verificado.")
