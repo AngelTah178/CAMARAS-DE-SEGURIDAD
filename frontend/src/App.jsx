@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./styles.css";
+import "./productos.css";
+import Productos from "./Productos.jsx";
 
 const TOKEN_KEY = "securitystock_access_token";
 
@@ -11,6 +13,13 @@ export default function App() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [view, setView] = useState("dashboard");
+  const handleUnauthorized = () => {
+    sessionStorage.removeItem(TOKEN_KEY);
+    setToken(null);
+    setAdmin(null);
+    setError("Tu sesión no es válida. Inicia sesión de nuevo.");
+  };
 
   useEffect(() => {
     if (!token) {
@@ -96,13 +105,19 @@ export default function App() {
         </div>
       </header>
       <main className="container py-5">
+        <nav className="d-flex gap-2 mb-4" aria-label="Secciones del sistema">
+          <button type="button" className={`btn ${view === "dashboard" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => setView("dashboard")}>Dashboard</button>
+          <button type="button" className={`btn ${view === "productos" ? "btn-primary" : "btn-outline-primary"}`} onClick={() => setView("productos")}>Productos</button>
+        </nav>
+        {view === "productos" ? <Productos token={token} onUnauthorized={handleUnauthorized} /> : <>
         <p className="text-muted-app mb-1">Panel de control</p>
         <h1 className="h2 mb-4">Bienvenido, {admin.usuario}</h1>
         <section className="dashboard-card">
           <span className="badge text-bg-success mb-3">Sesión autenticada</span>
           <h2 className="h4">Inventario de cámaras de seguridad</h2>
-          <p className="text-muted-app mb-0">Tu cuenta está validada por FastAPI y MongoDB Atlas. Los módulos de productos, movimientos y auditoría se implementarán en próximos sprints.</p>
+          <p className="text-muted-app mb-0">Tu cuenta está validada por FastAPI y MongoDB Atlas. Consulta y administra productos desde la sección Productos. Los movimientos y la auditoría se implementarán en próximos sprints.</p>
         </section>
+        </>}
       </main>
     </div>;
   }
