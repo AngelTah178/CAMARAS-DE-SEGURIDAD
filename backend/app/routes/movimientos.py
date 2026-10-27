@@ -160,10 +160,6 @@ def registrar_movimiento(body: MovimientoNuevo, admin: dict = Depends(require_ad
                 "stockPosterior": after_stock,
                 "creadoEn": datetime.now(timezone.utc),
             }
-            # Se evita guardar campos extra innecesarios en el evento.
-            event.pop("cantidadSolicitada", None)
-            event.pop("stockObjetivoSolicitado", None)
-
             updated = productos.find_one_and_update(
                 {
                     "_id": product_id,
