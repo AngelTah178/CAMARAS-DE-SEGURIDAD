@@ -1,0 +1,1 @@
+.product-modal-backdrop{position:fixed;inset:0;background:rgba(12,27,44,.55);display:grid;place-items:center;z-index:1050;padding:16px}.product-modal{width:min(100%,740px);max-height:92vh;overflow-y:auto}.table td,.table th{white-space:nowrap}.table td:nth-child(2){white-space:normal;min-width:170px}
